@@ -3,7 +3,7 @@ var _ = require('underscore');
 var handlebars = require('handlebars');
 var baseUrl = 'https://api.github.com';
 var moment = require('moment');
-var gitHubToken = require('./github-token.js').token;
+var gitHubToken; // = require('./github-token.js').token;
 
 if(typeof(gitHubToken) !== "undefined"){
   $.ajaxSetup({
@@ -12,6 +12,8 @@ if(typeof(gitHubToken) !== "undefined"){
     }
   });
 }
+
+
 // populates sidebar data
 var source = $("#sidebar-template").html();
 var template = handlebars.compile(source);
