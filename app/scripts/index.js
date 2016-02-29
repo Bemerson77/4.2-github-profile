@@ -16,6 +16,8 @@ if(typeof(gitHubToken) !== "undefined"){
 var source = $("#sidebar-template").html();
 var template = handlebars.compile(source);
 // populates repo tab
+var source = $("#repo-template").html();
+var repoTemplate = handlebars.compile(source);
 
 
 function fetchData(data){
@@ -29,8 +31,8 @@ function fetchData(data){
       name: data.name,
       login: data.login,
       location: data.location,
-      email: data.email.substring(0, 20) + "...",
-      blog: data.blog.substring(0, 22) + "...",
+      email: data.email.substring(0, 22) + "...",
+      blog: data.blog.substring(0, 25) + "...",
       joined: data.created_at,
       followers: data.followers,
       following: data.following,
@@ -51,6 +53,7 @@ function fetchData(data){
         updated: repoObjects.updated_at
       };
       console.log(repoData);
+      $('.js-repo-list').append(repoTemplate(repoData));
     });
 
   });
